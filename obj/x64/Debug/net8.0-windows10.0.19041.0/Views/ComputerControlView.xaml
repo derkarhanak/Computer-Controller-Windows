@@ -1,0 +1,317 @@
+﻿<Page x:ConnectionId='1'
+    x:Class="ComputerController.Views.ComputerControlView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:models="using:ComputerController.Models"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <StackPanel Grid.Row="0" Padding="24,16,24,12" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="0,0,0,1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Title Section -->
+                <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="12">
+                    <FontIcon Glyph="&#xE7F8;" FontSize="28" Foreground="{ThemeResource AccentFillColorDefaultBrush}"/>
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock Text="Computer Controller" FontSize="20" FontWeight="SemiBold" Foreground="{ThemeResource TextFillColorPrimaryBrush}"/>
+                        <TextBlock Text="Control your Windows PC with natural language" FontSize="12" Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <!-- Status Section with Settings -->
+                <StackPanel Grid.Column="1" Spacing="24" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <!-- History Counter -->
+                    <StackPanel x:ConnectionId='37' x:Name="HistoryPanel" Orientation="Horizontal" Spacing="8" Visibility="Collapsed" VerticalAlignment="Center">
+                        <TextBlock x:ConnectionId='41' x:Name="HistoryCount" FontSize="12" Foreground="{ThemeResource TextFillColorSecondaryBrush}" VerticalAlignment="Center"/>
+                        <HyperlinkButton x:ConnectionId='42' Content="Clear" FontSize="12"                            Padding="4,0" VerticalAlignment="Center"/>
+                    </StackPanel>
+
+                    <!-- Connection Status -->
+                    <Border Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1" CornerRadius="16" Padding="12,6">
+                        <StackPanel Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+                            <Ellipse x:ConnectionId='39' x:Name="StatusIndicator" Width="8" Height="8" VerticalAlignment="Center"/>
+                            <TextBlock x:ConnectionId='40' x:Name="StatusText" FontSize="12" Foreground="{ThemeResource TextFillColorSecondaryBrush}" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Border>
+                    
+                    <!-- Settings Button -->
+                    <Button x:ConnectionId='38'                        Background="Transparent" BorderThickness="0" Padding="8" CornerRadius="4" ToolTipService.ToolTip="Settings">
+                        <FontIcon Glyph="&#xE713;" FontSize="18" Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+
+        <!-- Main Content -->
+        <Grid x:ConnectionId='2' Grid.Row="1" x:Name="MainContent">
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup>
+                    <VisualState x:ConnectionId='3' x:Name="WideState">
+                        <VisualState.StateTriggers>
+                            <AdaptiveTrigger MinWindowWidth="800"/>
+                        </VisualState.StateTriggers>
+                        <VisualState.Setters>
+                            <Setter Target="MainContent.ColumnDefinitions[0].Width" Value="*"/>
+                            <Setter Target="MainContent.ColumnDefinitions[1].Width" Value="Auto"/>
+                            <Setter Target="MainContent.ColumnDefinitions[2].Width" Value="*"/>
+                            <Setter Target="MainContent.RowDefinitions[0].Height" Value="*"/>
+                            <Setter Target="MainContent.RowDefinitions[1].Height" Value="0"/>
+                            <Setter Target="InputArea.Grid.Column" Value="0"/>
+                            <Setter Target="InputArea.Grid.Row" Value="0"/>
+                            <Setter Target="Divider.Visibility" Value="Visible"/>
+                            <Setter Target="OutputArea.Grid.Column" Value="2"/>
+                            <Setter Target="OutputArea.Grid.Row" Value="0"/>
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:ConnectionId='4' x:Name="NarrowState">
+                        <VisualState.StateTriggers>
+                            <AdaptiveTrigger MinWindowWidth="0"/>
+                        </VisualState.StateTriggers>
+                        <VisualState.Setters>
+                            <Setter Target="MainContent.ColumnDefinitions[0].Width" Value="*"/>
+                            <Setter Target="MainContent.ColumnDefinitions[1].Width" Value="0"/>
+                            <Setter Target="MainContent.ColumnDefinitions[2].Width" Value="0"/>
+                            <Setter Target="MainContent.RowDefinitions[0].Height" Value="Auto"/>
+                            <Setter Target="MainContent.RowDefinitions[1].Height" Value="*"/>
+                            <Setter Target="InputArea.Grid.Column" Value="0"/>
+                            <Setter Target="InputArea.Grid.Row" Value="0"/>
+                            <Setter Target="Divider.Visibility" Value="Collapsed"/>
+                            <Setter Target="OutputArea.Grid.Column" Value="0"/>
+                            <Setter Target="OutputArea.Grid.Row" Value="1"/>
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" MinWidth="300"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*" MinWidth="300"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="0"/>
+            </Grid.RowDefinitions>
+
+            <!-- Input Area -->
+            <Grid x:ConnectionId='5' x:Name="InputArea" Grid.Column="0" Grid.Row="0" Padding="24">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Text="What would you like me to do?" FontSize="18" FontWeight="SemiBold" Margin="0,0,0,16" Foreground="{ThemeResource TextFillColorPrimaryBrush}"/>
+
+                <!-- Favorites -->
+                <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled" Margin="0,0,0,12">
+                    <ItemsControl x:ConnectionId='34'                                                                >
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal" Spacing="8"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate                      >
+                                <Button x:ConnectionId='36'                    FontSize="12" CornerRadius="16" Padding="12,6" 
+                                                               
+                                        Background="{ThemeResource LayerFillColorDefaultBrush}" 
+                                        BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"/>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+
+                <Grid Grid.Row="2" Margin="0,0,0,16">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    
+                    <Border Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" 
+                            BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" 
+                            BorderThickness="1" 
+                            CornerRadius="8">
+                        <Grid>
+                            <TextBox x:ConnectionId='33' x:Name="UserInputBox" 
+                                     TextWrapping="Wrap" 
+                                     AcceptsReturn="True"
+                                     PlaceholderText="Type your request here..."
+                                     FontFamily="Segoe UI"
+                                     FontSize="14"
+                                     Padding="16"
+                                     MinHeight="100"
+                                     MaxHeight="200"
+                                     BorderThickness="0"
+                                     Background="Transparent"
+                                     VerticalAlignment="Stretch"/>
+                        </Grid>
+                    </Border>
+                    <!-- Shadow effect -->
+                    <Border CornerRadius="8" Background="Black" Opacity="0.05" Margin="4,4,-4,-4" Canvas.ZIndex="-1"/>
+                </Grid>
+
+                <Grid Grid.Row="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="12" Margin="0,0,0,24">
+                        <Button x:ConnectionId='27'                     CornerRadius="4" Padding="12,8">
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <FontIcon Glyph="&#xE74D;" FontSize="16"/>
+                                <TextBlock Text="Clear"/>
+                            </StackPanel>
+                        </Button>
+                        <Button x:ConnectionId='28'                              CornerRadius="4" Padding="12,8" ToolTipService.ToolTip="Add current command to favorites">
+                            <FontIcon Glyph="&#xE734;" FontSize="16"/>
+                        </Button>
+                        <Button x:ConnectionId='29' x:Name="ExecuteButton" Style="{StaticResource AccentButtonStyle}"                       HorizontalAlignment="Right" CornerRadius="4" Padding="16,8">
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <ProgressRing x:ConnectionId='30' x:Name="LoadingRing" Width="16" Height="16" IsActive="False" Visibility="Collapsed"/>
+                                <FontIcon x:ConnectionId='31' x:Name="ExecuteIcon" Glyph="&#xE768;" FontSize="16"/>
+                                <TextBlock x:ConnectionId='32' x:Name="ExecuteText" Text="Execute" FontWeight="SemiBold"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+
+                    <!-- History List -->
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0" Margin="0,0,0,8">
+                             <TextBlock Text="Recent Activity" FontSize="14" FontWeight="SemiBold" Foreground="{ThemeResource TextFillColorSecondaryBrush}" VerticalAlignment="Center"/>
+                             <Button x:ConnectionId='26' Content="Clear History" FontSize="10" Padding="8,4" Height="24" HorizontalAlignment="Right"                            Background="Transparent" BorderThickness="0" Foreground="{ThemeResource TextFillColorTertiaryBrush}"/>
+                        </Grid>
+                        
+                        <ListView x:ConnectionId='20' Grid.Row="1"                                                                    SelectionMode="None" IsItemClickEnabled="True"                              >
+                            <ListView.ItemTemplate>
+                                <DataTemplate                                      >
+                                    <Grid x:ConnectionId='22' Padding="0,8">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Spacing="4">
+                                            <TextBlock x:ConnectionId='24'                             FontSize="13" TextTrimming="CharacterEllipsis" MaxLines="2"/>
+                                            <TextBlock x:ConnectionId='25'                                 FontSize="11" Foreground="{ThemeResource TextFillColorSecondaryBrush}" TextTrimming="CharacterEllipsis" MaxLines="1"/>
+                                        </StackPanel>
+                                        <Button x:ConnectionId='23' Grid.Column="1"                               Background="Transparent" BorderThickness="0" Padding="4" VerticalAlignment="Center" ToolTipService.ToolTip="Save to Favorites">
+                                            <FontIcon Glyph="&#xE734;" FontSize="12" Foreground="{ThemeResource TextFillColorTertiaryBrush}"/>
+                                        </Button>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
+                </Grid>
+            </Grid>
+
+            <!-- Divider -->
+            <Border x:ConnectionId='6' x:Name="Divider" Grid.Column="1" Grid.Row="0" Width="1" Background="{ThemeResource CardStrokeColorDefaultBrush}"/>
+
+            <!-- Output Area -->
+            <Grid x:ConnectionId='7' x:Name="OutputArea" Grid.Column="2" Grid.Row="0" Padding="24">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Text="Generated Output" FontSize="18" FontWeight="SemiBold" Margin="0,0,0,16"/>
+
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                    <StackPanel x:ConnectionId='8' x:Name="OutputPanel" Spacing="16">
+                        <!-- Empty state -->
+                        <StackPanel x:ConnectionId='9' x:Name="EmptyState" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="20" Padding="0,80,0,0">
+                            <Border Width="100" Height="100" CornerRadius="50" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1">
+                                <FontIcon Glyph="&#xE756;" FontSize="40" Foreground="{ThemeResource TextFillColorTertiaryBrush}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                            <StackPanel Spacing="8">
+                                <TextBlock Text="Ready to Generate" FontSize="20" FontWeight="SemiBold" Foreground="{ThemeResource TextFillColorSecondaryBrush}" HorizontalAlignment="Center"/>
+                                <TextBlock x:ConnectionId='19' x:Name="EmptyStateMessage" Text="Describe an action and I'll generate the code for you." TextWrapping="Wrap" TextAlignment="Center" MaxWidth="300" Foreground="{ThemeResource TextFillColorTertiaryBrush}"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <!-- Operation Description -->
+                        <StackPanel x:ConnectionId='10' x:Name="OperationPanel" Spacing="8" Visibility="Collapsed">
+                            <Grid>
+                                <TextBlock Text="Operation Plan" FontSize="14" FontWeight="Medium" Foreground="{ThemeResource TextFillColorSecondaryBrush}" VerticalAlignment="Center"/>
+                                <Button x:ConnectionId='18' Content="View Code"                        HorizontalAlignment="Right" FontSize="12" Padding="8,4" Height="28" Background="Transparent" BorderThickness="0" Foreground="{ThemeResource AccentFillColorDefaultBrush}"/>
+                            </Grid>
+                            <Border Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}" CornerRadius="8" Padding="16">
+                                <Grid ColumnDefinitions="Auto,*">
+                                    <FontIcon Glyph="&#xE946;" FontSize="20" Foreground="{ThemeResource AccentFillColorDefaultBrush}" VerticalAlignment="Top" Margin="0,2,12,0"/>
+                                    <TextBlock x:ConnectionId='17' Grid.Column="1" x:Name="OperationText" TextWrapping="Wrap" FontSize="14"/>
+                                </Grid>
+                            </Border>
+                        </StackPanel>
+
+                        <!-- Generated Code (HIDDEN) -->
+                        <StackPanel x:ConnectionId='11' x:Name="CodePanel" Spacing="8" Visibility="Collapsed">
+                            <TextBlock Text="Python Code" FontSize="14" FontWeight="Medium" Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
+                            <Border BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1" CornerRadius="8" Background="#1E1E1E">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    
+                                    <!-- Header for code block -->
+                                    <Border Grid.Row="0" Background="#252526" BorderBrush="#333333" BorderThickness="0,0,0,1" Padding="12,8" CornerRadius="8,8,0,0">
+                                        <StackPanel Orientation="Horizontal" Spacing="8">
+                                            <Ellipse Width="10" Height="10" Fill="#FF5F56"/>
+                                            <Ellipse Width="10" Height="10" Fill="#FFBD2E"/>
+                                            <Ellipse Width="10" Height="10" Fill="#27C93F"/>
+                                            <TextBlock Text="script.py" Margin="12,0,0,0" FontSize="12" Foreground="#999999" VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                    </Border>
+                                    
+                                    <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+                                        <TextBlock x:ConnectionId='16' x:Name="CodeText" FontFamily="Consolas, monospace" FontSize="13" TextWrapping="NoWrap" Margin="16" Foreground="#D4D4D4"/>
+                                    </ScrollViewer>
+                                </Grid>
+                            </Border>
+                        </StackPanel>
+
+                        <!-- Execution Result -->
+                        <StackPanel x:ConnectionId='12' x:Name="ResultPanel" Spacing="8" Visibility="Collapsed">
+                            <TextBlock Text="Execution Result" FontSize="14" FontWeight="Medium" Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
+                            <Border x:ConnectionId='13' x:Name="ResultBorder" CornerRadius="8" Padding="16" BorderThickness="1">
+                                <Grid ColumnDefinitions="Auto,*">
+                                    <FontIcon x:ConnectionId='14' x:Name="ResultIcon" Glyph="&#xE73E;" FontSize="20" VerticalAlignment="Top" Margin="0,2,12,0"/>
+                                    <TextBox x:ConnectionId='15' x:Name="ResultText" 
+                                             Grid.Column="1"
+                                             IsReadOnly="True" 
+                                             TextWrapping="Wrap" 
+                                             FontFamily="Consolas" 
+                                             FontSize="13" 
+                                             Background="Transparent" 
+                                             BorderThickness="0" 
+                                             Padding="0" 
+                                             MinHeight="0"/>
+                                </Grid>
+                            </Border>
+                        </StackPanel>
+                    </StackPanel>
+                </ScrollViewer>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>
+

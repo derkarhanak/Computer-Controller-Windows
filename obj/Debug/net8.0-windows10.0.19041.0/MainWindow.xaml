@@ -1,0 +1,33 @@
+﻿<Window
+    x:Class="ComputerController.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="Computer Controller">
+
+    <NavigationView x:ConnectionId='2'
+        x:Name="NavView"
+        IsBackButtonVisible="Collapsed"
+        IsSettingsVisible="False"
+        PaneDisplayMode="Top"
+                                                   >
+        
+        <NavigationView.MenuItems>
+            <NavigationViewItem Content="Computer Control" Tag="ComputerControl">
+                <NavigationViewItem.Icon>
+                    <FontIcon Glyph="&#xE7F8;"/>
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+            <NavigationViewItem Content="Settings &amp; Tools" Tag="Settings">
+                <NavigationViewItem.Icon>
+                    <FontIcon Glyph="&#xE713;"/>
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+        </NavigationView.MenuItems>
+
+        <Frame x:ConnectionId='3' x:Name="ContentFrame" Margin="0"/>
+    </NavigationView>
+</Window>
+
