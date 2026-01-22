@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ComputerController")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+20f4a884abc36db07b4134aff39a8b2dd67a99e9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2691dffa18a84cfebd2e8063505c90e93bb872e7")]
 [assembly: System.Reflection.AssemblyProductAttribute("ComputerController")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ComputerController")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
