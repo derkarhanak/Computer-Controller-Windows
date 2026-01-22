@@ -1,0 +1,18 @@
+# Build outputs
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.pfx
+
+# IDE
+.vs/
+*.sln.DotSettings.user
+
+# Logs
+*.log
+
+# Generated files
+generate_cert.ps1

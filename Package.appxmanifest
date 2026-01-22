@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Package
   xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
   xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
@@ -8,14 +8,14 @@
 
   <Identity
     Name="ComputerController"
-    Publisher="CN=YourName"
+    Publisher="CN=hanak"
     Version="1.0.0.0" />
 
   <mp:PhoneIdentity PhoneProductId="a1b2c3d4-e5f6-7890-abcd-ef1234567890" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>Computer Controller</DisplayName>
-    <PublisherDisplayName>Your Name</PublisherDisplayName>
+    <PublisherDisplayName>Computer Controller</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
