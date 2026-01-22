@@ -306,9 +306,16 @@ C:\Users\hanak\Music\app\ComputerController\obj\x64\Release\net8.0-windows10.0.1
 C:\Users\hanak\Music\app\ComputerController\obj\x64\Release\net8.0-windows10.0.19041.0\qualifiers.txt
 C:\Users\hanak\Music\app\ComputerController\obj\x64\Release\net8.0-windows10.0.19041.0\qualifiers.txt.intermediate
 C:\Users\hanak\Music\app\ComputerController\obj\x64\Release\net8.0-windows10.0.19041.0\MultipleQualifiersPerDimensionFound.txt
+C:\Users\hanak\Music\app\ComputerController\bin\x64\Release\net8.0-windows10.0.19041.0\Assets\SplashScreen.png
+C:\Users\hanak\Music\app\ComputerController\bin\x64\Release\net8.0-windows10.0.19041.0\Assets\Square150x150Logo.png
+C:\Users\hanak\Music\app\ComputerController\bin\x64\Release\net8.0-windows10.0.19041.0\Assets\Square44x44Logo.png
+C:\Users\hanak\Music\app\ComputerController\bin\x64\Release\net8.0-windows10.0.19041.0\Assets\StoreLogo.png
+C:\Users\hanak\Music\app\ComputerController\bin\x64\Release\net8.0-windows10.0.19041.0\Assets\Wide310x150Logo.png
+C:\Users\hanak\Music\app\ComputerController\bin\x64\Release\net8.0-windows10.0.19041.0\ComputerController.pri
+C:\Users\hanak\Music\app\ComputerController\obj\x64\Release\net8.0-windows10.0.19041.0\Microsoft.UI.Xaml.Controls.pri.xml
 C:\Users\hanak\Music\app\ComputerController\bin\x64\Release\net8.0-windows10.0.19041.0\resources.pri
 C:\Users\hanak\Music\app\ComputerController\bin\x64\Release\net8.0-windows10.0.19041.0\AppxManifest.xml
+C:\Users\hanak\Music\app\ComputerController\bin\x64\Release\net8.0-windows10.0.19041.0\AppPackages\ComputerController_1.0.0.0_x64_Test\ComputerController_1.0.0.0_x64.msix
 C:\Users\hanak\Music\app\ComputerController\obj\x64\Release\net8.0-windows10.0.19041.0\ProjectArchitectures.txt
-C:\Users\hanak\Music\app\ComputerController\bin\x64\Release\net8.0-windows10.0.19041.0\AppPackages\ComputerController_1.0.0.0_Test\ComputerController_1.0.0.0_x64.msix
 C:\Users\hanak\Music\app\ComputerController\obj\x64\Release\net8.0-windows10.0.19041.0\package.map.txt
 C:\Users\hanak\Music\app\ComputerController\obj\x64\Release\net8.0-windows10.0.19041.0\_pkginfo.txt
