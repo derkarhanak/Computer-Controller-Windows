@@ -21,6 +21,13 @@ public sealed partial class MainWindow : Window
         // Set window size
         this.AppWindow.Resize(new Windows.Graphics.SizeInt32(1000, 700));
 
+        // Set window icon
+        var iconPath = System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "Assets", "icon.ico");
+        if (System.IO.File.Exists(iconPath))
+        {
+            this.AppWindow.SetIcon(iconPath);
+        }
+
         // Apply saved theme immediately
         ApplyTheme();
 

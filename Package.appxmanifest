@@ -7,15 +7,15 @@
   IgnorableNamespaces="uap rescap">
 
   <Identity
-    Name="ComputerController"
-    Publisher="CN=hanak"
+    Name="KervenGullyyev.ComputerControl"
+    Publisher="CN=5C8A490F-DE3A-4A78-8F05-78596FA4ABF4"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="a1b2c3d4-e5f6-7890-abcd-ef1234567890" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="98ad5c79-73e7-4976-874a-fefdcfa11000" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>Computer Controller</DisplayName>
-    <PublisherDisplayName>Computer Controller</PublisherDisplayName>
+    <DisplayName>ComputerControl</DisplayName>
+    <PublisherDisplayName>KervenGullyyev</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
@@ -33,7 +33,7 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="$targetentrypoint$">
       <uap:VisualElements
-        DisplayName="Computer Controller"
+        DisplayName="ComputerControl"
         Description="Control your computer with natural language"
         BackgroundColor="transparent"
         Square150x150Logo="Assets\Square150x150Logo.png"
